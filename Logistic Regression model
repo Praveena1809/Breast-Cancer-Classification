@@ -1,0 +1,12 @@
+predictor_var = ['radius_mean','perimeter_mean','area_mean','compactness_mean','concave points_mean']
+outcome_var='diagnosis'
+model=LogisticRegression()
+classification_model(model,traindf,predictor_var,outcome_var)
+
+//The prediction accuracy is reasonable. What happens if we use just one predictor? Use the mean_radius:
+
+predictor_var = ['radius_mean']
+model=LogisticRegression()
+classification_model(model,traindf,predictor_var,outcome_var)
+
+//The accuracy of the predictions are good but not great. The cross-validation scores are reasonable.
