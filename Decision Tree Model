@@ -1,0 +1,11 @@
+predictor_var = ['radius_mean','perimeter_mean','area_mean','compactness_mean','concave points_mean']
+model = DecisionTreeClassifier()
+classification_model(model,traindf,predictor_var,outcome_var)
+
+//over-fitting the model probably due to the large number of predictors. Let use a single predictor, the obvious one is the radius of the cell.
+
+predictor_var = ['radius_mean']
+model = DecisionTreeClassifier()
+classification_model(model,traindf,predictor_var,outcome_var)
+
+//Using a single predictor gives a 97% prediction accuracy for this model but the cross-validation score is not that great.
