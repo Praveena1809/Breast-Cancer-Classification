@@ -1,0 +1,24 @@
+df.describe()
+
+df.describe()
+plt.hist(df['diagnosis'])
+plt.title('Diagnosis (M=1 , B=0)')
+plt.show()
+
+features_mean=list(df.columns[1:11])
+# split dataframe into two based on diagnosis
+dfM=df[df['diagnosis'] ==1]
+dfB=df[df['diagnosis'] ==0]
+#Stack the data
+plt.rcParams.update({'font.size': 8})
+fig, axes = plt.subplots(nrows=5, ncols=2, figsize=(8,10))
+axes = axes.ravel()
+for idx,ax in enumerate(axes):
+    ax.figure
+    binwidth= (max(df[features_mean[idx]]) - min(df[features_mean[idx]]))/50
+    ax.hist([dfM[features_mean[idx]],dfB[features_mean[idx]]], bins=np.arange(min(df[features_mean[idx]]), max(df[features_mean[idx]]) + binwidth, binwidth) , alpha=0.5,stacked=True, normed = True, label=['M','B'],color=['r','g'])
+    ax.legend(loc='upper right')
+    ax.set_title(features_mean[idx])
+plt.tight_layout()
+plt.show()
+traindf, testdf = train_test_split(df, test_size = 0.3)
