@@ -1,0 +1,27 @@
+# Use all the features of the nucleus
+predictor_var = features_mean
+model = RandomForestClassifier(n_estimators=100,min_samples_split=25, max_depth=7, max_features=2)
+classification_model(model, traindf,predictor_var,outcome_var)
+
+//An advantage with Random Forest is that it returns a feature importance matrix which can be used to select features. So lets select the top 5 features and use them as predictors.
+
+#Create a series with feature importances:
+featimp = pd.Series(model.feature_importances_, index=predictor_var).sort_values(ascending=False)
+print(featimp)
+# Using top 5 features
+predictor_var = ['concave points_mean','area_mean','radius_mean','perimeter_mean','concavity_mean',]
+model = RandomForestClassifier(n_estimators=100, min_samples_split=25, max_depth=7, max_features=2)
+classification_model(model,traindf,predictor_var,outcome_var)
+
+predictor_var =  ['radius_mean']
+model = RandomForestClassifier(n_estimators=100)
+classification_model(model, traindf,predictor_var,outcome_var)
+
+//Using on the test data set:
+# Use all the features of the nucleus
+predictor_var = features_mean
+model = RandomForestClassifier(n_estimators=100,min_samples_split=25, max_depth=7, max_features=2)
+classification_model(model, testdf,predictor_var,outcome_var)
+
+
+//The prediction accuracy for the test data set using the above Random Forest model is 95%!
