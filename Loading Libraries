@@ -10,7 +10,7 @@ import mpld3 as mpl
 #Import models from scikit learn module:
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.cross_validation import KFold   #For K-fold cross validation
+from sklearn.model_selection import KFold #For K-fold cross validation
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn import metrics
